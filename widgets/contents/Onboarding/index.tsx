@@ -4,8 +4,6 @@ import { LoginSVG } from "assets/svg/Login";
 import { CustomButton } from "shared/ui/Button";
 import { globalStyles } from "shared/styles/global";
 
-// import WelcomeSVG from "assets/login.svg";
-
 export const OnboardingContent = () => {
   const navigation = useNavigation<any>();
 
@@ -29,9 +27,9 @@ export const OnboardingContent = () => {
         безопасность и спокойствие находятся в надежных руках. .
       </Text>
       <CustomButton
-        title="Зарегистрироваться"
+        title="Зарегистрирoваться"
         marginTop={32}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("Registration")}
       />
       <Text
         style={[

@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { HomeScreen } from "./Home";
 import { Onboarding } from "./Onboarding";
+import { Registration } from "./Registration";
 
 const Stack = createStackNavigator();
 
@@ -15,7 +16,7 @@ function AppStack() {
       <Stack.Screen
         name="Registration"
         options={{ headerShown: false }}
-        component={Onboarding}
+        component={Registration}
       />
       <Stack.Screen
         name="Home"

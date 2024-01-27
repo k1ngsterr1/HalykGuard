@@ -28,7 +28,7 @@ export const CustomButton: React.FC<ButtonProps> = ({
   };
 
   return (
-    <TouchableOpacity style={buttonStyle}>
+    <TouchableOpacity style={buttonStyle} onPress={onPress}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
