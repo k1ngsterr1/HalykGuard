@@ -12,6 +12,13 @@ export const RegistrationContent = () => {
   const { control, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
+  const renderErrorMessage = (error: any) => {
+    if (error) {
+      return <Text style={styles.errorText}>{error.message || "Error"}</Text>;
+    }
+    return null;
+  };
+
   return (
     <SafeAreaView style={globalStyles.container}>
       <UpperTabBack
@@ -27,11 +34,7 @@ export const RegistrationContent = () => {
         )}
         defaultValue=""
       />
-      {errors.firstName && (
-        <Text style={styles.errorText}>
-          {errors.firstName.message ? errors.firstName.message : "Error"}
-        </Text>
-      )}
+      {renderErrorMessage(errors.firstName)}
 
       <Input placeholder="Ваша Фамилия" marginTop={32} />
       <Input placeholder="Email" marginTop={32} />
