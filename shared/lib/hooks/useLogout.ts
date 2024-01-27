@@ -9,7 +9,7 @@ export const useLogOut = () => {
 
   const logOut = () => {
     try {
-      AsyncStorage.clear();
+      AsyncStorage.removeItem("JWT");
       dispatch(logOutFunction());
       navigation.navigate("Onboarding");
       console.log("jwt удален");
