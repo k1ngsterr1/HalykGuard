@@ -8,6 +8,7 @@ export const Colors = {
 };
 
 export const Fonts = {
-  regular: "OpenSans-Regular",
+  regular: require("assets/fonts/OpenSans/OpenSans-Regular.ttf"),
+  // regular: require("assets/fonts/OpenSans/OpenSans-Regular.ttf"),
   bold: "OpenSans-Bold",
 };
