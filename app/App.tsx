@@ -9,19 +9,21 @@ import AppStack from "screens";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
-    [Fonts.regular]: require("assets/fonts/OpenSans/OpenSans-Regular.ttf"),
-    [Fonts.medium]: require("assets/fonts/OpenSans/OpenSans-Medium.ttf"),
-    [Fonts.semiBold]: require("assets/fonts/OpenSans/OpenSans-SemiBold.ttf"),
-    [Fonts.bold]: require("assets/fonts/OpenSans/OpenSans-Bold.ttf"),
-    [Fonts.extraBold]: require("assets/fonts/OpenSans/OpenSans-ExtraBold.ttf"),
-
-    // Italic
-    [Fonts.lightItalic]: require("assets/fonts/OpenSans/OpenSans-LightItalic.ttf"),
-    [Fonts.italic]: require("assets/fonts/OpenSans/OpenSans-Italic.ttf"),
-    [Fonts.italicMedium]: require("assets/fonts/OpenSans/OpenSans-MediumItalic.ttf"),
-    [Fonts.italicSemiBold]: require("assets/fonts/OpenSans/OpenSans-SemiBold.ttf"),
-    [Fonts.italicBold]: require("assets/fonts/OpenSans/OpenSans-Bold.ttf"),
+    "OpenSans-Light": require("../assets/fonts/OpenSans/OpenSans-Light.ttf"),
+    "OpenSans-Regular": require("../assets/fonts/OpenSans/OpenSans-Regular.ttf"),
+    "OpenSans-Medium": require("../assets/fonts/OpenSans/OpenSans-Medium.ttf"),
+    "OpenSans-SemiBold": require("../assets/fonts/OpenSans/OpenSans-SemiBold.ttf"),
+    "OpenSans-Bold": require("../assets/fonts/OpenSans/OpenSans-Bold.ttf"),
+    "OpenSans-ExtraBold": require("../assets/fonts/OpenSans/OpenSans-ExtraBold.ttf"),
+    "OpenSans-LightItalic": require("../assets/fonts/OpenSans/OpenSans-LightItalic.ttf"),
+    "OpenSans-Italic": require("../assets/fonts/OpenSans/OpenSans-Italic.ttf"),
+    "OpenSans-MediumItalic": require("../assets/fonts/OpenSans/OpenSans-MediumItalic.ttf"),
+    "OpenSans-BoldItalic": require("../assets/fonts/OpenSans/OpenSans-BoldItalic.ttf"),
   });
+
+  if (!fontsLoaded) {
+    return;
+  }
 
   return (
     <Provider store={store}>
