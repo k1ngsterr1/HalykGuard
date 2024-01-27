@@ -1,11 +1,9 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "shared/styles/theme";
 
 export const styles = StyleSheet.create({
-  inputsContainer: {
-    width: "100%",
-    flexDirection: "column",
-    display: "flex",
-    alignItems: "flex-start",
-    marginBottom: -200,
+  errorText: {
+    fontSize: 16,
+    color: Colors.red,
   },
 });
