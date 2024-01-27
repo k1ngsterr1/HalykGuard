@@ -1,5 +1,6 @@
 import React from "react";
+import { View } from "react-native";
 
 export const HomeContent = () => {
-  return <div>index</div>;
+  return <View></View>;
 };

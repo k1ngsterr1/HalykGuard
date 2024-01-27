@@ -1,5 +1,6 @@
 import React from "react";
+import { View } from "react-native";
 
 export const UnderTab = () => {
-  return <div>index</div>;
+  return <View></View>;
 };
