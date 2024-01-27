@@ -10,15 +10,15 @@ const NavPanel = () => {
       <TouchableOpacity style={styles.buttonContainer}>
         <InfoSvg/>
         <View style={styles.buttonTextContainer}>
-          <Text style={styles.titleText}>Информация</Text>
-          <Text style={styles.text}>Краткая информация о продукте</Text>
+          <Text style={styles.titleText}>Страхование</Text>
+          <Text style={styles.text}>Мой активные страховки</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer}>
         <InfoSvg/>
         <View style={styles.buttonTextContainer}>
-          <Text style={styles.titleText}>Информация</Text>
-          <Text style={styles.text}>Краткая информация о продукте</Text>
+          <Text style={styles.titleText}>Калькулятор</Text>
+          <Text style={styles.text}>Узнайте как сосать хуй</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -26,15 +26,15 @@ const NavPanel = () => {
       <TouchableOpacity style={styles.buttonContainer}>
         <InfoSvg/>
         <View style={styles.buttonTextContainer}>
-          <Text style={styles.titleText}>Информация</Text>
-          <Text style={styles.text}>Краткая информация о продукте</Text>
+          <Text style={styles.titleText}>Медецинская дата</Text>
+          <Text style={styles.text}>Ера чорт</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer}>
         <InfoSvg/>
         <View style={styles.buttonTextContainer}>
           <Text style={styles.titleText}>Информация</Text>
-          <Text style={styles.text}>Краткая информация о продукте</Text>
+          <Text style={styles.text}>Краткая информация</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     padding: 10,
     flexDirection: "row",
-    flexWrap: "wrap",
     alignItems: "center",
     marginVertical: 5,
     flex: 1,
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
   },
   buttonTextContainer: {
     flexDirection: "column",
-    paddingLeft: 7
+    marginLeft: 5
   },
   titleText: {
     color: '#01B071',

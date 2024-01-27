@@ -3,8 +3,8 @@ import { HomeScreen } from "./Home";
 import { Onboarding } from "./Onboarding";
 
 const Stack = createStackNavigator();
-
 function AppStack() {
+
   return (
     <Stack.Navigator>
       <Stack.Screen

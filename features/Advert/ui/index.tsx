@@ -1,15 +1,15 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
-import HalykImg from "assets/images/home/advert.png";
+import HalykImg from "assets/images/home/halyk100.png";
 
-const HomeSwiper = () => {
+const HomeAdvertSwipe = () => {
   return (
     <Swiper
       style={styles.wrapper}
       height={100}
-      showsPagination={false}
-      loop={false}
+      showsPagination={true}
+      loop={true}
       showsButtons={false}
     >
         <Image source={HalykImg} style={styles.image} />
@@ -23,16 +23,16 @@ const styles = StyleSheet.create({
   wrapper: {
     marginTop: 30,
     marginBottom: 30,
-    height: 100,
+    height: 100
   },
   slide: {
     marginRight: 20,
   },
 
   image: {
-    width: 160,
-    height: 90,
+    width: '100%',
+    height: 80,
   },
 });
 
-export default HomeSwiper;
+export default HomeAdvertSwipe;

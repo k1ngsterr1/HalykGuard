@@ -4,6 +4,9 @@ import Ava from "assets/images/home/ava.png";
 import HomeSwiper from "features/HomeSwiper/ui";
 import NavPanel from "widgets/NavPanel";
 import { NotificationSvg } from "assets/svg/Notification";
+import { Fonts } from "shared/styles/theme";
+import HomeAdvertSwipe from "features/Advert/ui";
+import UnderTab from "features/UnderTab/ui";
 
 
 
@@ -20,8 +23,10 @@ const HomeContent: React.FC = () => {
         </View>
         <NotificationSvg />
       </View>
-      {/* <HomeSwiper /> */}
+      <HomeSwiper />
       <NavPanel/>
+      <HomeAdvertSwipe/>
+      <UnderTab activeId={1}/>
     </SafeAreaView>
   );
 };
@@ -50,15 +55,13 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 18,
-    fontFamily: "Open Sans",
-    fontWeight: "600",
+    fontFamily: Fonts.medium,
     marginBottom: 3,
   },
   time: {
     color: "#646464",
-    fontFamily: "Open Sans",
+    fontFamily: Fonts.medium,
     fontSize: 12,
-    fontWeight: "600",
   },
   notificationContainer: {
     padding: 5,
