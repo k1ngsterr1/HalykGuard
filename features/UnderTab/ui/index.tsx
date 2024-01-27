@@ -1,72 +1,53 @@
-import {
-  faBars,
-  faComment,
-  faFileLines,
-  faHomeAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Colors, Fonts } from "shared/styles/theme";
+import { useNavigation } from "@react-navigation/native";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {
+  faBars,
+  faComment,
+  faEarthAsia,
+  faFileLines,
+  faHomeAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   activeId: number;
 }
 
 const UnderTab: React.FC<Props> = ({ activeId }) => {
+  const navigation = useNavigation<any>();
+
+  const renderTabButton = (
+    id: number,
+    label: string,
+    icon: IconDefinition,
+    name: string
+  ) => {
+    return (
+      <TouchableOpacity key={id} onPress={() => navigation.navigate(name)}>
+        <FontAwesomeIcon
+          style={[activeId === id ? styles.activeTabButton : ""]}
+          icon={icon}
+          size={20}
+        />
+        <Text
+          style={[styles.tabText, activeId === id && styles.activeTabButton]}
+        >
+          {label}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.tabContainer}>
       <View style={styles.tabInner}>
-        <TouchableOpacity
-          style={[styles.tabButton, activeId === 1 && styles.activeTabButton]}
-        >
-          <FontAwesomeIcon
-            style={[activeId === 1 && styles.activeTabButton]}
-            icon={faHomeAlt}
-          />
-          <Text
-            style={[styles.tabText, activeId === 1 && styles.activeTabButton]}
-          >
-            Главная
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.tabButton, activeId === 2 && styles.activeTabButton]}
-        >
-          <FontAwesomeIcon
-            style={[activeId === 2 && styles.activeTabButton]}
-            icon={faFileLines}
-          />
-          <Text
-            style={[styles.tabText, activeId === 2 && styles.activeTabButton]}
-          >
-            Страховка
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.tabButton, activeId === 3 && styles.activeTabButton]}
-        >
-          <FontAwesomeIcon
-            style={[activeId === 3 && styles.activeTabButton]}
-            icon={faComment}
-          />
-          <Text
-            style={[styles.tabText, activeId === 3 && styles.activeTabButton]}
-          >
-            Чат бот
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.tabButton, activeId === 4 && styles.activeTabButton]}>
-          <FontAwesomeIcon
-            style={[activeId === 4 && styles.activeTabButton]}
-            icon={faBars}
-          />
-          <Text
-            style={[styles.tabText, activeId === 4 && styles.activeTabButton]}
-          >
-            Сервисы
-          </Text>
-        </TouchableOpacity>
+        {renderTabButton(1, "Главная", faHomeAlt, "Home")}
+        {renderTabButton(2, "Землетрясение", faEarthAsia, "Earthquake")}
+        {renderTabButton(3, "Чат Бот", faComment, "ChatBot")}
+        {renderTabButton(4, "Сервисы", faBars, "Services")}
       </View>
     </View>
   );
@@ -91,14 +72,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   tabButton: {
-    flex: 1,
     alignItems: "center",
+    flexDirection: 'column',
+    justifyContent: 'center',
     paddingVertical: 10,
   },
   activeTabButton: {
     color: Colors.primary_green,
   },
-
   tabText: {
     color: "black",
     textAlign: "center",
