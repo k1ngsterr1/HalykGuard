@@ -1,8 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "redux/slices/loginSlice";
+import { setUsername } from "redux/slices/userSlice";
+import { RootState } from "redux/store";
 
 export interface LoginData {
   username: string;
@@ -12,6 +14,7 @@ export interface LoginData {
 const useSignIn = () => {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
+  const username = useSelector((state: RootState) => state.firstName.username);
 
   const signIn = async (data: LoginData) => {
     const formData = new FormData();
@@ -25,6 +28,7 @@ const useSignIn = () => {
         formData
       );
       AsyncStorage.setItem("JWT", response.data.access_token);
+      dispatch(setUsername(response.data.firstname));
       dispatch(logIn());
       console.log("successfully signed in!", response.data);
       navigation.navigate("Home");

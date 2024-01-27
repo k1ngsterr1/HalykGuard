@@ -1,38 +1,61 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
-import Swiper from "react-native-swiper";
+import { View, Image, StyleSheet, Dimensions } from "react-native";
+import Carousel from "react-native-snap-carousel";
 import HalykImg from "assets/images/home/advert.png";
 
-const HomeSwiper = () => {
+const { width } = Dimensions.get("window");
+const SLIDE_WIDTH = Math.round(width / 3) - 10;
+const SLIDE_MARGIN = 10; // Margin for each side of a slide
+
+const HomeCarousel = () => {
+  const images = [HalykImg, HalykImg, HalykImg, HalykImg]; // Repeat or use different images
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.slide}>
+        <Image source={item} style={styles.image} />
+      </View>
+    );
+  };
+
   return (
-    <Swiper
-      style={styles.wrapper}
-      height={100}
-      showsPagination={false}
-      loop={false}
-      showsButtons={false}
-    >
-        <Image source={HalykImg} style={styles.image} />
-        <Image source={HalykImg} style={styles.image} />
-        <Image source={HalykImg} style={styles.image} />
-    </Swiper>
+    <View style={styles.carouselContainer}>
+      <Carousel
+        data={images}
+        renderItem={renderItem}
+        sliderWidth={width}
+        itemWidth={SLIDE_WIDTH + SLIDE_MARGIN * 2} // Adjust for margins
+        inactiveSlideScale={1}
+        inactiveSlideOpacity={1}
+        loop={false}
+        autoplay={false}
+        showsPagination={false}
+        contentContainerCustomStyle={styles.carouselContentContainer}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    marginTop: 30,
-    marginBottom: 30,
-    height: 100,
+  carouselContainer: {
+    width: "100%",
+    marginTop: 0,
+    marginBottom: 32,
+  },
+  carouselContentContainer: {
+    paddingHorizontal: SLIDE_MARGIN / 2, // Half margin for the first and last item
   },
   slide: {
-    marginRight: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: SLIDE_WIDTH,
+    marginHorizontal: SLIDE_MARGIN, // Add margin to each slide
   },
-
   image: {
-    width: 160,
+    width: "100%",
     height: 90,
+    resizeMode: "contain",
   },
 });
 
-export default HomeSwiper;
+export default HomeCarousel;
