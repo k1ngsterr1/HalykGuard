@@ -35,14 +35,12 @@ function AppStack() {
           dispatch(logIn());
           navigation.navigate("Home");
         } else {
-          // Token does not exist or is null
           console.log("No token found");
           dispatch(logOut());
           navigation.navigate("Onboarding");
         }
       } catch (error) {
         console.error("Error reading JWT token:", error);
-        // Handle error appropriately
       }
     };
 

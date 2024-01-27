@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import { setUsername } from "redux/slices/userSlice";
 
 export interface UserData {
   firstname: string;
@@ -18,6 +19,7 @@ const useSignUp = () => {
         "https://halyk-production.up.railway.app/api/v1/auth/signup/",
         data
       );
+      setUsername(data.firstname);
       console.log("successfully signed up!", response.data);
     } catch (error: any) {
       console.error("There was an error with sign up:", error);
