@@ -1,9 +1,35 @@
-import { Button } from "react-native";
+import { TouchableOpacity, Text, ViewStyle } from "react-native";
+
+import { styles } from "./styles";
 
 interface ButtonProps {
   title: string;
+  onPress: () => void;
+  marginTop?: number;
+  marginBottom?: number;
+  marginLeft?: number;
+  marginRight?: number;
 }
 
-export const CustomButton: React.FC<ButtonProps> = ({ title }) => {
-  return <Button title={title} />;
+export const CustomButton: React.FC<ButtonProps> = ({
+  title,
+  onPress,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
+}) => {
+  const buttonStyle: ViewStyle = {
+    ...styles.regularButton,
+    marginTop: marginTop || 0,
+    marginBottom: marginBottom || 0,
+    marginLeft: marginLeft || 0,
+    marginRight: marginRight || 0,
+  };
+
+  return (
+    <TouchableOpacity style={buttonStyle}>
+      <Text style={styles.buttonText}>{title}</Text>
+    </TouchableOpacity>
+  );
 };
