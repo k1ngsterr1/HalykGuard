@@ -5,7 +5,6 @@ module.exports = function (api) {
     plugins: [
       [
         "module-resolver",
-        "nativewind/babel",
         {
           root: ["./"],
           alias: {
@@ -15,6 +14,7 @@ module.exports = function (api) {
             "@features": "./src/features",
             "@widgets": "./src/widgets",
             "@screens": "./src/screens",
+            "@redux": "./src/redux",
             "@app": "./src/app",
           },
         },

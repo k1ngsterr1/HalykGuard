@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 
 export const OnboardingContent = () => {
   return (
-    <View>
+    <View style={{ width: "100%", backgroundColor: "red" }}>
       <Text>Test</Text>
     </View>
   );

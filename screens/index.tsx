@@ -7,16 +7,12 @@ const Stack = createStackNavigator();
 function AppStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Onboarding"
-        options={{ headerShown: true }}
-        component={Onboarding}
-      ></Stack.Screen>
+      <Stack.Screen name="Onboarding" component={Onboarding} />
       <Stack.Screen
         name="Home"
         options={{ headerShown: false }}
         component={HomeScreen}
-      ></Stack.Screen>
+      />
     </Stack.Navigator>
   );
 }

@@ -4,8 +4,8 @@ import { OnboardingContent } from "widgets/contents/Onboarding";
 
 export const Onboarding = () => {
   return (
-    <>
-      <OnboardingContent />
-    </>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Onboarding Screen</Text>
+    </View>
   );
 };

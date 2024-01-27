@@ -10,6 +10,7 @@
       "@features/*": ["src/features/*"],
       "@widgets/*": ["src/widgets/*"],
       "@screens/*": ["src/screens/*"],
+      "@redux/*": ["src/redux/*"],
       "@app/*": ["src/app/*"]
     }
   }
