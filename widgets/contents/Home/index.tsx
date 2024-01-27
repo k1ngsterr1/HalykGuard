@@ -3,7 +3,7 @@ import { View, Image, Text, StyleSheet, SafeAreaView, TouchableOpacity, ImageSou
 import Ava from "assets/images/home/ava.png";
 import HomeSwiper from "features/HomeSwiper/ui";
 import NavPanel from "widgets/NavPanel";
-import { Fonts } from "shared/styles/theme";
+import { Colors, Fonts } from "shared/styles/theme";
 import HomeAdvertSwipe from "features/Advert/ui";
 import UnderTab from "features/UnderTab/ui";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -21,11 +21,12 @@ const HomeContent: React.FC = () => {
             <Text style={styles.time}>Вт. 20 апреля</Text>
           </View>
         </View>
-        {/* <FontAwesomeIcon icon={faBellx} style={}/> */}
+        <FontAwesomeIcon style={styles.icon} icon={faBell}/>
       </View>
       <HomeSwiper />
       <NavPanel/>
       <HomeAdvertSwipe/>
+      <View style={{height: 250}}></View>
       <UnderTab activeId={1}/>
     </SafeAreaView>
   );
@@ -59,18 +60,13 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   time: {
-    color: "#646464",
+    color: Colors.secondary_gray,
     fontFamily: Fonts.medium,
     fontSize: 12,
   },
-  notificationContainer: {
-    padding: 5,
-    borderRadius: 5,
-    marginTop: 5,
-  },
-  notificationText: {
-    fontSize: 16,
-  },
+  icon: {
+    fontSize: 44
+  }
 });
 
 export default HomeContent;

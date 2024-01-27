@@ -8,7 +8,7 @@ const HomeAdvertSwipe = () => {
     <Swiper
       style={styles.wrapper}
       height={100}
-      showsPagination={true}
+      showsPagination={false}
       loop={true}
       showsButtons={false}
     >
