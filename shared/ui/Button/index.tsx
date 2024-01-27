@@ -5,6 +5,7 @@ import { styles } from "./styles";
 interface ButtonProps {
   title: string;
   onPress: () => void;
+  type?: string;
   marginTop?: number;
   marginBottom?: number;
   marginLeft?: number;
@@ -14,6 +15,7 @@ interface ButtonProps {
 export const CustomButton: React.FC<ButtonProps> = ({
   title,
   onPress,
+  type,
   marginTop,
   marginBottom,
   marginLeft,

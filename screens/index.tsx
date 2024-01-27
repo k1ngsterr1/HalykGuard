@@ -9,6 +9,7 @@ import { Calculator } from "./Calculator";
 import { Earthquake } from "./Earthquake";
 import { Info } from "./Info";
 import { Med } from "./Med";
+import { Login } from "./Login";
 
 const Stack = createStackNavigator();
 function AppStack() {
@@ -27,6 +28,11 @@ function AppStack() {
         name="Registration"
         options={{ headerShown: false }}
         component={Registration}
+      />
+      <Stack.Screen
+        name="Login"
+        options={{ headerShown: false }}
+        component={Login}
       />
       <Stack.Screen
         name="Home"

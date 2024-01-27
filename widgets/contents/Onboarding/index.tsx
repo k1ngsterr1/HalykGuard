@@ -38,6 +38,7 @@ export const OnboardingContent = () => {
           globalStyles.text4,
           globalStyles.primary_green,
         ]}
+        onPress={() => navigation.navigate("Login")}
       >
         Войти
       </Text>
