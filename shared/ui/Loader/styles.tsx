@@ -3,13 +3,21 @@ import { Colors, Fonts } from "shared/styles/theme";
 
 export const styles = StyleSheet.create({
   loader: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    flex: 1,
     backgroundColor: Colors.primary_green,
-    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  contentContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  indicatorContainer: {
+    marginTop: 20, // Adjust the margin as needed
+    width: 80, // Set width for the indicator container
+    height: 80, // Set height for the indicator container
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     fontSize: 48,

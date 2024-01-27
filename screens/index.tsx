@@ -24,28 +24,28 @@ function AppStack() {
   const isLoggedIn = useSelector((state: RootState) => state.login.isLoggedIn);
   const JWT = AsyncStorage.getItem("JWT");
 
-  // useEffect(() => {
-  //   console.log(JWT);
-  //   const checkLoginStatus = async () => {
-  //     try {
-  //       const jwtToken = await AsyncStorage.getItem("JWT");
+  useEffect(() => {
+    console.log(JWT);
+    const checkLoginStatus = async () => {
+      try {
+        const jwtToken = await AsyncStorage.getItem("JWT");
 
-  //       if (jwtToken) {
-  //         console.log("Token exists: ", jwtToken); // Logging the actual token
-  //         dispatch(logIn());
-  //         navigation.navigate("Home");
-  //       } else {
-  //         console.log("No token found");
-  //         dispatch(logOut());
-  //         navigation.navigate("Onboarding");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error reading JWT token:", error);
-  //     }
-  //   };
+        if (jwtToken) {
+          console.log("Token exists: ", jwtToken); // Logging the actual token
+          dispatch(logIn());
+          navigation.navigate("Home");
+        } else {
+          console.log("No token found");
+          dispatch(logOut());
+          navigation.navigate("Onboarding");
+        }
+      } catch (error) {
+        console.error("Error reading JWT token:", error);
+      }
+    };
 
-  //   checkLoginStatus();
-  // }, [JWT]);
+    checkLoginStatus();
+  }, [JWT]);
 
   return (
     <Stack.Navigator

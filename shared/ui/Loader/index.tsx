@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import {
   BallIndicator,
   BarIndicator,
@@ -15,8 +15,13 @@ import { styles } from "./styles";
 
 export const Loader = () => {
   return (
-    <View style={styles.loader}>
-      <Text style={styles.text}>Halyk Guard</Text>
-    </View>
+    <SafeAreaView style={styles.loader}>
+      <View style={styles.contentContainer}>
+        <Text style={styles.text}>Halyk Guard</Text>
+        <View style={styles.indicatorContainer}>
+          <PulseIndicator color="white" size={64} />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };

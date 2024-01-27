@@ -9,6 +9,7 @@ import { PasswordInput } from "shared/ui/PasswordInput";
 import { styles } from "./styles/styles";
 import { CustomButton } from "shared/ui/Button";
 import useSignUp, { UserData } from "shared/lib/hooks/useSignUp";
+import { setUsername } from "redux/slices/userSlice";
 
 export const RegistrationContent = () => {
   const { control, handleSubmit, watch, formState } = useForm<UserData>();

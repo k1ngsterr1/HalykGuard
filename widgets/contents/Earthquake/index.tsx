@@ -12,6 +12,10 @@ import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { Colors, Fonts } from "shared/styles/theme";
 import axios from "axios";
 import { ScrollView } from "react-native-gesture-handler";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleOffLoader, toggleOnLoader } from "redux/slices/loaderSlice";
+import { RootState } from "redux/store";
+import { Loader } from "shared/ui/Loader";
 
 interface EarthquakeData {
   magnitude: number;
@@ -21,6 +25,9 @@ interface EarthquakeData {
 }
 
 const EarthquakeContent: React.FC = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state: RootState) => state.loading.isLoading);
+
   const [list, setList] = useState<EarthquakeData[]>([]);
 
   const getColorForMagnitude = (magnitude: number) => {
@@ -38,6 +45,7 @@ const EarthquakeContent: React.FC = () => {
   };
   useEffect(() => {
     const fetchEarthquakeData = async () => {
+      dispatch(toggleOnLoader());
       try {
         const response = await axios.post(
           "https://halyk-production.up.railway.app/api/v1/earthquake/",
@@ -48,6 +56,7 @@ const EarthquakeContent: React.FC = () => {
         );
 
         setList(response.data);
+        dispatch(toggleOffLoader());
       } catch (error) {
         console.error("Error fetching earthquake data:", error);
         throw error;
@@ -56,27 +65,31 @@ const EarthquakeContent: React.FC = () => {
 
     fetchEarthquakeData();
   }, []);
-  
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Землетрясение</Text>
-        {list.map((i, index) => (
-            <TouchableOpacity key={index} style={styles.buttonContainer}>
-              <Text
-                style={{
-                  color: getColorForMagnitude(i.magnitude),
-                  fontSize: 32,
-                  fontFamily: Fonts.bold,
-                }}
-              >
-                {i.magnitude}
-              </Text>
-              <View style={styles.col}>
-                <Text style={styles.titleText}>{i.location}</Text>
-                <Text style={styles.text}>{i.distance_km}</Text>
-              </View>
-            </TouchableOpacity>
-        ))}
+      {list.map((i, index) => (
+        <TouchableOpacity key={index} style={styles.buttonContainer}>
+          <Text
+            style={{
+              color: getColorForMagnitude(i.magnitude),
+              fontSize: 32,
+              fontFamily: Fonts.bold,
+            }}
+          >
+            {i.magnitude}
+          </Text>
+          <View style={styles.col}>
+            <Text style={styles.titleText}>{i.location}</Text>
+            <Text style={styles.text}>{i.distance_km}</Text>
+          </View>
+        </TouchableOpacity>
+      ))}
       <UnderTab activeId={2} />
     </SafeAreaView>
   );
@@ -90,13 +103,13 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   title: {
-    color: "black",
+    color: Colors.text_gray,
     textAlign: "center",
     fontFamily: Fonts.semiBold,
     fontSize: 22,
     fontStyle: "normal",
     marginTop: 5,
-    marginBottom: 30
+    marginBottom: 30,
   },
   buttonsContainer: {
     flexDirection: "row",

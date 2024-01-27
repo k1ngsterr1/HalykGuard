@@ -1,25 +1,16 @@
 import React from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, Text } from "react-native";
 import UnderTab from "features/UnderTab/ui";
+import { globalStyles } from "shared/styles/global";
+import { styles } from "./styles";
+import { UpperTabBack } from "features/UpperTabs/ui";
+import { ChatUnderTab } from "features/ChatUnderTab/ui";
 
-
-const ChatBotContent: React.FC = () => {
+export const ChatBotContent: React.FC = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{height: 250}}></View>
-      <UnderTab activeId={3}/>
+    <SafeAreaView style={globalStyles.container}>
+      <UpperTabBack headingTitle="Чат Бот" />
+      <ChatUnderTab />
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    marginRight: 20,
-    marginLeft: 20,
-  },
-
-});
-
-export default ChatBotContent;
