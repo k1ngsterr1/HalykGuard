@@ -11,7 +11,7 @@ import { CustomButton } from "shared/ui/Button";
 import useSignUp, { UserData } from "shared/lib/hooks/useSignUp";
 
 export const RegistrationContent = () => {
-  const { control, handleSubmit, watch, formState } = useForm();
+  const { control, handleSubmit, watch, formState } = useForm<UserData>();
   const { signUp } = useSignUp();
   const { errors } = formState;
 
@@ -36,17 +36,17 @@ export const RegistrationContent = () => {
       />
       <Controller
         control={control}
-        name="firstName"
+        name="firstname"
         rules={{ required: "Имя обязательное поле для ввода!" }}
         render={({ field: { onChange, value } }) => (
           <Input onChangeText={onChange} value={value} placeholder="Ваше имя" />
         )}
         defaultValue=""
       />
-      {renderErrorMessage(errors.firstName)}
+      {renderErrorMessage(errors.firstname)}
       <Controller
         control={control}
-        name="lastName"
+        name="lastname"
         rules={{ required: "Фамилия обязательное поле для ввода!" }}
         render={({ field: { onChange, value } }) => (
           <Input
@@ -57,7 +57,7 @@ export const RegistrationContent = () => {
           />
         )}
       />
-      {renderErrorMessage(errors.lastName)}
+      {renderErrorMessage(errors.lastname)}
       <Controller
         control={control}
         name="email"
@@ -94,7 +94,7 @@ export const RegistrationContent = () => {
       {renderErrorMessage(errors.password)}
       <Controller
         control={control}
-        name="passwordConfirmation"
+        name="confirm_password"
         rules={{
           required: "Подтверждение пароля обязательно!",
           validate: (value) => value === password || "Пароли не совпадают",
@@ -108,7 +108,7 @@ export const RegistrationContent = () => {
           />
         )}
       />
-      {renderErrorMessage(errors.passwordConfirmation)}
+      {renderErrorMessage(errors.confirm_password)}
       <CustomButton
         title="Зарегистрироваться"
         onPress={handleSubmit(onSubmit)}
