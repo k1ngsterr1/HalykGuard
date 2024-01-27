@@ -1,13 +1,12 @@
 import React from "react";
 import { UpperTabBack } from "features/UpperTabs/ui";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import { useForm, UseFormReturn, Controller } from "react-hook-form";
 import { globalStyles } from "shared/styles/global";
 import { Input } from "shared/ui/Input";
 import { MainHeading } from "shared/ui/MainHeading";
 import { PasswordInput } from "shared/ui/PasswordInput";
 import { styles } from "./styles/styles";
-import { Text } from "react-native-svg";
 
 export const RegistrationContent = () => {
   const { control, handleSubmit, formState } = useForm();
@@ -28,11 +27,11 @@ export const RegistrationContent = () => {
         )}
         defaultValue=""
       />
-      {/* {errors.firstName && (
+      {errors.firstName && (
         <Text style={styles.errorText}>
-          {errors.firstName.message || "Error"}
+          {errors.firstName.message ? errors.firstName.message : "Error"}
         </Text>
-      )} */}
+      )}
 
       <Input placeholder="Ваша Фамилия" marginTop={32} />
       <Input placeholder="Email" marginTop={32} />
