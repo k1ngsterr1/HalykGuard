@@ -7,10 +7,15 @@ import { Input } from "shared/ui/Input";
 import { MainHeading } from "shared/ui/MainHeading";
 import { PasswordInput } from "shared/ui/PasswordInput";
 import { styles } from "./styles/styles";
+import { CustomButton } from "shared/ui/Button";
 
 export const RegistrationContent = () => {
-  const { control, handleSubmit, formState } = useForm();
+  const { control, handleSubmit, watch, formState } = useForm();
   const { errors } = formState;
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   const renderErrorMessage = (error: any) => {
     if (error) {
@@ -18,6 +23,8 @@ export const RegistrationContent = () => {
     }
     return null;
   };
+
+  const password = watch("password");
 
   return (
     <SafeAreaView style={globalStyles.container}>
@@ -28,17 +35,83 @@ export const RegistrationContent = () => {
       <Controller
         control={control}
         name="firstName"
-        rules={{ required: "Имя обязательно поле для ввода!" }}
+        rules={{ required: "Имя обязательное поле для ввода!" }}
         render={({ field: { onChange, value } }) => (
           <Input onChangeText={onChange} value={value} placeholder="Ваше имя" />
         )}
         defaultValue=""
       />
       {renderErrorMessage(errors.firstName)}
-
-      <Input placeholder="Ваша Фамилия" marginTop={32} />
-      <Input placeholder="Email" marginTop={32} />
-      <PasswordInput placeholder="Пароль" marginTop={32} />
+      <Controller
+        control={control}
+        name="lastName"
+        rules={{ required: "Фамилия обязательное поле для ввода!" }}
+        render={({ field: { onChange, value } }) => (
+          <Input
+            onChangeText={onChange}
+            value={value}
+            placeholder="Ваша фамилия"
+            marginTop={32}
+          />
+        )}
+      />
+      {renderErrorMessage(errors.lastName)}
+      <Controller
+        control={control}
+        name="email"
+        rules={{
+          required: "Почта обязательное поле для ввода!",
+          pattern: {
+            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+            message: "Неверный формат электронной почты",
+          },
+        }}
+        render={({ field: { onChange, value } }) => (
+          <Input
+            placeholder="Email"
+            onChangeText={onChange}
+            value={value}
+            marginTop={32}
+          />
+        )}
+      />
+      {renderErrorMessage(errors.email)}
+      <Controller
+        control={control}
+        name="password"
+        rules={{ required: "Пароль обязательное поле для ввода!" }}
+        render={({ field: { onChange, value } }) => (
+          <PasswordInput
+            placeholder="Пароль"
+            marginTop={32}
+            value={value}
+            onChangeText={onChange}
+          />
+        )}
+      />
+      {renderErrorMessage(errors.password)}
+      <Controller
+        control={control}
+        name="passwordConfirmation"
+        rules={{
+          required: "Подтверждение пароля обязательно!",
+          validate: (value) => value === password || "Пароли не совпадают",
+        }}
+        render={({ field: { onChange, value } }) => (
+          <PasswordInput
+            placeholder="Подтвердите пароль"
+            marginTop={32}
+            value={value}
+            onChangeText={onChange}
+          />
+        )}
+      />
+      {renderErrorMessage(errors.passwordConfirmation)}
+      <CustomButton
+        title="Зарегистрироваться"
+        onPress={handleSubmit(onSubmit)}
+        marginTop={48}
+      />
     </SafeAreaView>
   );
 };
