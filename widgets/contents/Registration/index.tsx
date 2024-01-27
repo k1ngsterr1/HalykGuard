@@ -8,13 +8,15 @@ import { MainHeading } from "shared/ui/MainHeading";
 import { PasswordInput } from "shared/ui/PasswordInput";
 import { styles } from "./styles/styles";
 import { CustomButton } from "shared/ui/Button";
+import useSignUp, { UserData } from "shared/lib/hooks/useSignUp";
 
 export const RegistrationContent = () => {
   const { control, handleSubmit, watch, formState } = useForm();
+  const { signUp } = useSignUp();
   const { errors } = formState;
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = (data: UserData) => {
+    signUp(data);
   };
 
   const renderErrorMessage = (error: any) => {
