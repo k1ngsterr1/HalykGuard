@@ -86,4 +86,11 @@ export const globalStyles = StyleSheet.create({
   w85: {
     width: "85%",
   },
+
+  main_heading: {
+    fontSize: 24,
+    fontFamily: Fonts.bold,
+    color: "#282828",
+    marginTop: 32,
+  },
 });
