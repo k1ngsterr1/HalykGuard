@@ -1,58 +1,61 @@
 import React from "react";
 import { View, Image, StyleSheet, Dimensions } from "react-native";
-import Swiper from "react-native-swiper";
+import Carousel from "react-native-snap-carousel";
 import HalykImg from "assets/images/home/advert.png";
 
 const { width } = Dimensions.get("window");
+const SLIDE_WIDTH = Math.round(width / 3) - 10;
+const SLIDE_MARGIN = 10; // Margin for each side of a slide
 
-const HomeSwiper = () => {
+const HomeCarousel = () => {
+  const images = [HalykImg, HalykImg, HalykImg, HalykImg]; // Repeat or use different images
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.slide}>
+        <Image source={item} style={styles.image} />
+      </View>
+    );
+  };
+
   return (
-    <View style={styles.swiperContainer}>
-      <Swiper
-        style={styles.wrapper}
-        showsPagination={false}
+    <View style={styles.carouselContainer}>
+      <Carousel
+        data={images}
+        renderItem={renderItem}
+        sliderWidth={width}
+        itemWidth={SLIDE_WIDTH + SLIDE_MARGIN * 2} // Adjust for margins
+        inactiveSlideScale={1}
+        inactiveSlideOpacity={1}
         loop={false}
-        showsButtons={false}
-      >
-        {/* Each slide will be a single View containing three images */}
-        <View style={styles.slide}>
-          <Image source={HalykImg} style={styles.image} />
-          <Image source={HalykImg} style={styles.image} />
-          <Image source={HalykImg} style={styles.image} />
-        </View>
-        <View style={styles.slide}>
-          <Image source={HalykImg} style={styles.image} />
-          <Image source={HalykImg} style={styles.image} />
-          <Image source={HalykImg} style={styles.image} />
-        </View>
-        {/* Repeat the above View for each set of three images */}
-      </Swiper>
+        autoplay={false}
+        showsPagination={false}
+        contentContainerCustomStyle={styles.carouselContentContainer}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  swiperContainer: {
-    flex: 1,
+  carouselContainer: {
+    width: "100%",
     marginTop: 0,
-    height: 200,
-    borderWidth: 1,
     marginBottom: 32,
   },
-  wrapper: {
-    height: 200,
+  carouselContentContainer: {
+    paddingHorizontal: SLIDE_MARGIN / 2, // Half margin for the first and last item
   },
   slide: {
-    flex: 1,
-    flexDirection: "row", // Layout images in a row
-    justifyContent: "center", // Center the images
-    alignItems: "center", // Align items in the center of the slide
+    justifyContent: "center",
+    alignItems: "center",
+    width: SLIDE_WIDTH,
+    marginHorizontal: SLIDE_MARGIN, // Add margin to each slide
   },
   image: {
-    width: width / 3 - 10, // Divide the width by 3 and subtract some margin
+    width: "100%",
     height: 90,
-    marginHorizontal: 5, // Margin between images
+    resizeMode: "contain",
   },
 });
 
-export default HomeSwiper;
+export default HomeCarousel;

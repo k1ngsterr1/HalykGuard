@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "redux/store";
 import { styles } from "./styles/styles";
 import { InsuranceCard } from "entities/InsuranceCard/ui";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const HomeContent: React.FC = () => {
   const today = new Date();
@@ -31,6 +32,7 @@ const HomeContent: React.FC = () => {
   });
 
   const formattedDate = formatter.format(today);
+  const username = AsyncStorage.getItem("username");
 
   return (
     <SafeAreaView style={styles.container}>
@@ -44,7 +46,6 @@ const HomeContent: React.FC = () => {
         <FontAwesomeIcon size={22} color={Colors.primary_green} icon={faBell} />
       </View>
       <InsuranceCard price="1.000.000₸" />
-
       <HomeSwiper />
       <NavPanel />
       <HomeAdvertSwipe />

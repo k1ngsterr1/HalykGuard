@@ -26,7 +26,11 @@ const UnderTab: React.FC<Props> = ({ activeId }) => {
     name: string
   ) => {
     return (
-      <TouchableOpacity key={id} onPress={() => navigation.navigate(name)}>
+      <TouchableOpacity
+        style={styles.touchableContainer}
+        key={id}
+        onPress={() => navigation.navigate(name)}
+      >
         <FontAwesomeIcon
           style={[activeId === id ? styles.activeTabButton : ""]}
           icon={icon}
@@ -54,6 +58,12 @@ const UnderTab: React.FC<Props> = ({ activeId }) => {
 };
 
 const styles = StyleSheet.create({
+  touchableContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
   tabContainer: {
     backgroundColor: Colors.white,
     borderTopWidth: 1,
@@ -73,8 +83,8 @@ const styles = StyleSheet.create({
   },
   tabButton: {
     alignItems: "center",
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
     paddingVertical: 10,
   },
   activeTabButton: {
