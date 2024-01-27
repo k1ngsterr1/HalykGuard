@@ -43,6 +43,17 @@ export const OnboardingContent = () => {
       >
         Войти
       </Text>
+      <Text
+        style={[
+          globalStyles.bold,
+          globalStyles.mt4,
+          globalStyles.text4,
+          globalStyles.primary_green,
+        ]}
+        onPress={() => navigation.navigate("Home")}
+      >
+        Для Диаса
+      </Text>
     </SafeAreaView>
   );
 };

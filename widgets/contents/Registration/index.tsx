@@ -1,6 +1,7 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View } from "react-native";
+import { globalStyles } from "shared/styles/global";
 
 export const RegistrationContent = () => {
-  return <SafeAreaView>index</SafeAreaView>;
+  return <SafeAreaView style={globalStyles.container}></SafeAreaView>;
 };
