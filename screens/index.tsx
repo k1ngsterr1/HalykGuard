@@ -4,8 +4,8 @@ import { Onboarding } from "./Onboarding";
 import { Registration } from "./Registration";
 
 const Stack = createStackNavigator();
-
 function AppStack() {
+
   return (
     <Stack.Navigator>
       <Stack.Screen
