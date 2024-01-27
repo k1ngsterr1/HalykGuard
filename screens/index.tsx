@@ -10,35 +10,58 @@ import { Earthquake } from "./Earthquake";
 import { Info } from "./Info";
 import { Med } from "./Med";
 import { Login } from "./Login";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
 function AppStack() {
+  const JWT = AsyncStorage.getItem("JWT");
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      if (JWT === null || undefined) {
+        setIsSignedIn(false);
+      } else {
+        setIsSignedIn(true);
+      }
+    };
+
+    checkLoginStatus();
+  }, []);
+
   return (
     <Stack.Navigator
       screenOptions={{
         animationEnabled: false,
       }}
     >
-      <Stack.Screen
-        name="Onboarding"
-        options={{ headerShown: false }}
-        component={Onboarding}
-      />
-      <Stack.Screen
-        name="Registration"
-        options={{ headerShown: false }}
-        component={Registration}
-      />
-      <Stack.Screen
-        name="Login"
-        options={{ headerShown: false }}
-        component={Login}
-      />
-      <Stack.Screen
-        name="Home"
-        options={{ headerShown: false }}
-        component={HomeScreen}
-      />
+      {isSignedIn ? (
+        <Stack.Screen
+          name="Home"
+          options={{ headerShown: false }}
+          component={HomeScreen}
+        />
+      ) : (
+        <>
+          <Stack.Screen
+            name="Onboarding"
+            options={{ headerShown: false }}
+            component={Onboarding}
+          />
+
+          <Stack.Screen
+            name="Registration"
+            options={{ headerShown: false }}
+            component={Registration}
+          />
+          <Stack.Screen
+            name="Login"
+            options={{ headerShown: false }}
+            component={Login}
+          />
+        </>
+      )}
       <Stack.Screen
         name="ChatBot"
         options={{ headerShown: false }}

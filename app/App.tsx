@@ -6,6 +6,8 @@ import { store } from "redux/store";
 import { useFonts } from "expo-font";
 import { Fonts } from "shared/styles/theme";
 import AppStack from "screens";
+import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
