@@ -1,27 +1,30 @@
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faMedrt } from "@fortawesome/free-brands-svg-icons";
+import { faCalculator, faFileLines, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Colors, Fonts } from "shared/styles/theme";
+import { useNavigation } from "@react-navigation/native";
 
 const NavPanel = () => {
+  const navigation = useNavigation<any>();
   return (
     <View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Insurance')} style={styles.buttonContainer}>
           <FontAwesomeIcon
-            icon={faInfoCircle}
-            style={{ color: Colors.secondary_gray }}
+            icon={faFileLines}
+            style={{ color: Colors.primary_green}}
           />
           <View style={styles.buttonTextContainer}>
             <Text style={styles.titleText}>Страхование</Text>
             <Text style={styles.text}>Мой активные страховки</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Calculator')} style={styles.buttonContainer}>
           <FontAwesomeIcon
-            icon={faInfoCircle}
-            style={{ color: Colors.secondary_gray }}
+            icon={faCalculator}
+            style={{ color: Colors.primary_green}}
           />
           <View style={styles.buttonTextContainer}>
             <Text style={styles.titleText}>Калькулятор</Text>
@@ -30,20 +33,20 @@ const NavPanel = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Med')} style={styles.buttonContainer}>
           <FontAwesomeIcon
-            icon={faInfoCircle}
-            style={{ color: Colors.secondary_gray }}
+            icon={faMedrt}
+            style={{ color: Colors.primary_green}}
           />
           <View style={styles.buttonTextContainer}>
-            <Text style={styles.titleText}>Медецинская дата</Text>
+            <Text style={styles.titleText}>Медецинская</Text>
             <Text style={styles.text}>Ера чорт</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Info')} style={styles.buttonContainer}>
           <FontAwesomeIcon
             icon={faInfoCircle}
-            style={{ color: Colors.secondary_gray }}
+            style={{ color: Colors.primary_green}}
           />
           <View style={styles.buttonTextContainer}>
             <Text style={styles.titleText}>Информация</Text>
@@ -65,7 +68,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     borderRadius: 12,
     backgroundColor: Colors.white,
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
@@ -77,15 +81,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   titleText: {
-    color: Colors.primary_green,
+    color:Colors.text_gray,
     fontFamily: Fonts.medium,
-    fontSize: 12,
+    fontSize: 15,
     fontStyle: "normal",
   },
   text: {
     color: Colors.secondary_gray,
     fontFamily: Fonts.light,
-    fontSize: 9,
+    fontSize: 10,
     fontStyle: "normal",
   },
 });
