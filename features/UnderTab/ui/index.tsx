@@ -1,6 +1,13 @@
+import {
+  faBars,
+  faComment,
+  faFileLines,
+  faHomeAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { Fonts } from "shared/styles/theme";
+import { Colors, Fonts } from "shared/styles/theme";
 
 interface Props {
   activeId: number;
@@ -13,26 +20,52 @@ const UnderTab: React.FC<Props> = ({ activeId }) => {
         <TouchableOpacity
           style={[styles.tabButton, activeId === 1 && styles.activeTabButton]}
         >
-          {/* <NotificationSvg /> */}
-          <Text style={styles.tabText}>Button 1</Text>
+          <FontAwesomeIcon
+            style={[activeId === 1 && styles.activeTabButton]}
+            icon={faHomeAlt}
+          />
+          <Text
+            style={[styles.tabText, activeId === 1 && styles.activeTabButton]}
+          >
+            Главная
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tabButton, activeId === 2 && styles.activeTabButton]}
         >
-          {/* <NotificationSvg /> */}
-          <Text style={styles.tabText}>Button 2</Text>
+          <FontAwesomeIcon
+            style={[activeId === 2 && styles.activeTabButton]}
+            icon={faFileLines}
+          />
+          <Text
+            style={[styles.tabText, activeId === 2 && styles.activeTabButton]}
+          >
+            Страховка
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tabButton, activeId === 3 && styles.activeTabButton]}
         >
-          {/* <NotificationSvg /> */}
-          <Text style={styles.tabText}>Button 3</Text>
+          <FontAwesomeIcon
+            style={[activeId === 3 && styles.activeTabButton]}
+            icon={faComment}
+          />
+          <Text
+            style={[styles.tabText, activeId === 3 && styles.activeTabButton]}
+          >
+            Чат бот
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.tabButton, activeId === 4 && styles.activeTabButton]}
-        >
-          {/* <NotificationSvg /> */}
-          <Text style={styles.tabText}>Button 4</Text>
+        <TouchableOpacity style={[styles.tabButton, activeId === 4 && styles.activeTabButton]}>
+          <FontAwesomeIcon
+            style={[activeId === 4 && styles.activeTabButton]}
+            icon={faBars}
+          />
+          <Text
+            style={[styles.tabText, activeId === 4 && styles.activeTabButton]}
+          >
+            Сервисы
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -41,7 +74,7 @@ const UnderTab: React.FC<Props> = ({ activeId }) => {
 
 const styles = StyleSheet.create({
   tabContainer: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: Colors.white,
     borderTopWidth: 1,
     position: "absolute",
     bottom: 0,
@@ -50,7 +83,8 @@ const styles = StyleSheet.create({
     left: -20,
   },
   tabInner: {
-    paddingVertical: 20,
+    paddingBottom: 25,
+    paddingTop: 10,
     paddingHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-around",
@@ -62,16 +96,16 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   activeTabButton: {
-    borderBottomWidth: 2,
-    borderBottomColor: "blue", // Цвет активной вкладки
+    color: Colors.primary_green,
   },
 
   tabText: {
-    color: "#646464",
+    color: "black",
     textAlign: "center",
     fontFamily: Fonts.medium,
     fontSize: 10,
     fontStyle: "normal",
+    marginTop: 5,
   },
 });
 
