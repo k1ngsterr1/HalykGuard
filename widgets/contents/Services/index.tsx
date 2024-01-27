@@ -41,7 +41,6 @@ const ServicesContent: React.FC = () => {
               style={{ color: Colors.primary_green, marginBottom: 20 }}
               size={30}
             />
-
             <View style={styles.col}>
               <Text style={styles.titleText}>Страхование</Text>
               <View style={styles.divider}></View>
@@ -163,7 +162,7 @@ const styles = StyleSheet.create({
   },
   divider: {
     paddingTop: 20,
-    width: "240%",
+    width: 270,
     borderBottomWidth: 1,
     borderColor: Colors.light_gray,
     marginLeft: 17,
