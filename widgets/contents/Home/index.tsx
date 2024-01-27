@@ -3,11 +3,11 @@ import { View, Image, Text, StyleSheet, SafeAreaView, TouchableOpacity, ImageSou
 import Ava from "assets/images/home/ava.png";
 import HomeSwiper from "features/HomeSwiper/ui";
 import NavPanel from "widgets/NavPanel";
-import { NotificationSvg } from "assets/svg/Notification";
 import { Fonts } from "shared/styles/theme";
 import HomeAdvertSwipe from "features/Advert/ui";
 import UnderTab from "features/UnderTab/ui";
-
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 
 
 const HomeContent: React.FC = () => {
@@ -21,7 +21,7 @@ const HomeContent: React.FC = () => {
             <Text style={styles.time}>Вт. 20 апреля</Text>
           </View>
         </View>
-        <NotificationSvg />
+        {/* <FontAwesomeIcon icon={faBellx} style={}/> */}
       </View>
       <HomeSwiper />
       <NavPanel/>

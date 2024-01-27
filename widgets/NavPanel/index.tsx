@@ -1,4 +1,3 @@
-import { InfoSvg } from "assets/svg/Info";
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Fonts } from "shared/styles/theme";
@@ -8,14 +7,14 @@ const NavPanel = () => {
     <View>
         <View style={styles.buttonsContainer}>
       <TouchableOpacity style={styles.buttonContainer}>
-        <InfoSvg/>
+        {/* <InfoSvg/> */}
         <View style={styles.buttonTextContainer}>
           <Text style={styles.titleText}>Страхование</Text>
           <Text style={styles.text}>Мой активные страховки</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer}>
-        <InfoSvg/>
+        {/* <InfoSvg/> */}
         <View style={styles.buttonTextContainer}>
           <Text style={styles.titleText}>Калькулятор</Text>
           <Text style={styles.text}>Узнайте как сосать хуй</Text>
@@ -24,14 +23,14 @@ const NavPanel = () => {
     </View>
         <View style={styles.buttonsContainer}>
       <TouchableOpacity style={styles.buttonContainer}>
-        <InfoSvg/>
+        {/* <InfoSvg/> */}
         <View style={styles.buttonTextContainer}>
           <Text style={styles.titleText}>Медецинская дата</Text>
           <Text style={styles.text}>Ера чорт</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer}>
-        <InfoSvg/>
+        {/* <InfoSvg/> */}
         <View style={styles.buttonTextContainer}>
           <Text style={styles.titleText}>Информация</Text>
           <Text style={styles.text}>Краткая информация</Text>

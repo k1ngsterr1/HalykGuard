@@ -1,4 +1,3 @@
-import { NotificationSvg } from "assets/svg/Notification";
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Fonts } from "shared/styles/theme";
@@ -14,25 +13,25 @@ const UnderTab: React.FC<Props> = ({ activeId }) => {
         <TouchableOpacity
           style={[styles.tabButton, activeId === 1 && styles.activeTabButton]}
         >
-          <NotificationSvg />
+          {/* <NotificationSvg /> */}
           <Text style={styles.tabText}>Button 1</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tabButton, activeId === 2 && styles.activeTabButton]}
         >
-          <NotificationSvg />
+          {/* <NotificationSvg /> */}
           <Text style={styles.tabText}>Button 2</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tabButton, activeId === 3 && styles.activeTabButton]}
         >
-          <NotificationSvg />
+          {/* <NotificationSvg /> */}
           <Text style={styles.tabText}>Button 3</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tabButton, activeId === 4 && styles.activeTabButton]}
         >
-          <NotificationSvg />
+          {/* <NotificationSvg /> */}
           <Text style={styles.tabText}>Button 4</Text>
         </TouchableOpacity>
       </View>
