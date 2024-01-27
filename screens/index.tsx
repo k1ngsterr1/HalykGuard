@@ -11,24 +11,33 @@ import { Info } from "./Info";
 import { Med } from "./Med";
 import { Login } from "./Login";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { logIn, logOut } from "redux/slices/loginSlice";
+import { RootState } from "redux/store";
+import { useNavigation } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 function AppStack() {
+  const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state: RootState) => state.login.isLoggedIn);
   const JWT = AsyncStorage.getItem("JWT");
-  const [isSignedIn, setIsSignedIn] = useState(false);
 
   useEffect(() => {
+    console.log(JWT);
     const checkLoginStatus = async () => {
-      if (JWT === null || undefined) {
-        setIsSignedIn(false);
+      if (JWT == null || undefined || Object) {
+        dispatch(logOut());
+        navigation.navigate("Onboarding");
       } else {
-        setIsSignedIn(true);
+        dispatch(logIn());
+        navigation.navigate("Home");
       }
     };
 
     checkLoginStatus();
-  }, []);
+  }, [JWT]);
 
   return (
     <Stack.Navigator
@@ -36,32 +45,29 @@ function AppStack() {
         animationEnabled: false,
       }}
     >
-      {isSignedIn ? (
-        <Stack.Screen
-          name="Home"
-          options={{ headerShown: false }}
-          component={HomeScreen}
-        />
-      ) : (
-        <>
-          <Stack.Screen
-            name="Onboarding"
-            options={{ headerShown: false }}
-            component={Onboarding}
-          />
+      <Stack.Screen
+        name="Home"
+        options={{ headerShown: false }}
+        component={HomeScreen}
+      />
 
-          <Stack.Screen
-            name="Registration"
-            options={{ headerShown: false }}
-            component={Registration}
-          />
-          <Stack.Screen
-            name="Login"
-            options={{ headerShown: false }}
-            component={Login}
-          />
-        </>
-      )}
+      <Stack.Screen
+        name="Onboarding"
+        options={{ headerShown: false }}
+        component={Onboarding}
+      />
+
+      <Stack.Screen
+        name="Registration"
+        options={{ headerShown: false }}
+        component={Registration}
+      />
+      <Stack.Screen
+        name="Login"
+        options={{ headerShown: false }}
+        component={Login}
+      />
+
       <Stack.Screen
         name="ChatBot"
         options={{ headerShown: false }}

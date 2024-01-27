@@ -1,6 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logIn } from "redux/slices/loginSlice";
 
 export interface LoginData {
   username: string;
@@ -9,6 +11,7 @@ export interface LoginData {
 
 const useSignIn = () => {
   const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
 
   const signIn = async (data: LoginData) => {
     const formData = new FormData();
@@ -22,11 +25,11 @@ const useSignIn = () => {
         formData
       );
       AsyncStorage.setItem("JWT", response.data.access_token);
+      dispatch(logIn());
       console.log("successfully signed in!", response.data);
+      navigation.navigate("Home");
     } catch (error: any) {
       console.error("There was an error with sign in:", error);
-    } finally {
-      navigation.navigate("Home");
     }
   };
 
