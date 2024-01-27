@@ -4,7 +4,8 @@ export const styles = StyleSheet.create({
   backUpperTab: {
     width: "90%",
     position: "absolute",
-    top: 48,
+    top: 64,
+    flexDirection: "column",
     display: "flex",
     alignItems: "flex-start",
   },

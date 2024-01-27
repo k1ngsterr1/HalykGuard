@@ -3,6 +3,7 @@
 export const Colors = {
   primary_green: "#0CC582",
   secondary_gray: "#646464",
+  red: "#FF0055",
   text_gray: "#282828",
   light_gray: "#E3E4E9",
   white: "#fff",
