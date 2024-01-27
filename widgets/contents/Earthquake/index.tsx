@@ -9,6 +9,7 @@ import UnderTab from "features/UnderTab/ui";
 import { Fonts } from "shared/styles/theme";
 import axios from "axios";
 import { styles } from "./styles";
+import * as Notifications from 'expo-notifications';
 
 interface EarthquakeData {
   magnitude: number;
@@ -53,6 +54,15 @@ const EarthquakeContent: React.FC = () => {
 
     fetchEarthquakeData();
   }, []);
+  const sendLocalNotification = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Мое уведомление',
+        body: 'Привет, это мое первое уведомление!',
+      },
+      trigger: null, // Отправляем сразу же, без задержки
+    });
+  };
 
   return (
     <SafeAreaView style={styles.container}>

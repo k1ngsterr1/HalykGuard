@@ -49,7 +49,7 @@ const HomeContent: React.FC = () => {
       <HomeSwiper />
       <NavPanel />
       <HomeAdvertSwipe />
-      <View style={{ height: 250 }}></View>
+      {/* <View style={{ height: 250 }}></View> */}
       <UnderTab activeId={1} />
     </SafeAreaView>
   );

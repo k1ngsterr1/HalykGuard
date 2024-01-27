@@ -27,7 +27,7 @@ const HomeCarousel = () => {
         itemWidth={SLIDE_WIDTH + SLIDE_MARGIN * 2} // Adjust for margins
         inactiveSlideScale={1}
         inactiveSlideOpacity={1}
-        loop={false}
+        loop={true}
         autoplay={false}
         showsPagination={false}
         contentContainerCustomStyle={styles.carouselContentContainer}
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   carouselContentContainer: {
-    paddingHorizontal: SLIDE_MARGIN / 2, // Half margin for the first and last item
+    paddingHorizontal: SLIDE_MARGIN / 2, 
   },
   slide: {
     justifyContent: "center",
     alignItems: "center",
     width: SLIDE_WIDTH,
-    marginHorizontal: SLIDE_MARGIN, // Add margin to each slide
+    marginHorizontal: SLIDE_MARGIN, 
   },
   image: {
     width: "100%",

@@ -37,4 +37,9 @@ export const styles = StyleSheet.create({
     fontStyle: "normal",
     marginTop: 5,
   },
+  touchableContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
 });
