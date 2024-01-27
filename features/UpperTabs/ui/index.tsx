@@ -2,7 +2,6 @@ import { View } from "react-native";
 import { styles } from "./styles";
 import { BackButton } from "shared/ui/BackButton";
 import { MainHeading } from "shared/ui/MainHeading";
-import { Input } from "shared/ui/Input";
 
 interface UpperTabProps {
   backNavigation: string;

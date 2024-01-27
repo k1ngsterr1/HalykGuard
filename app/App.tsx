@@ -1,14 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
 import { store } from "redux/store";
 import { useFonts } from "expo-font";
-import { Fonts } from "shared/styles/theme";
 import AppStack from "screens";
-import { useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 export default function App() {
   let [fontsLoaded] = useFonts({
     "OpenSans-Light": require("../assets/fonts/OpenSans/OpenSans-Light.ttf"),
@@ -26,7 +21,7 @@ export default function App() {
   if (!fontsLoaded) {
     return;
   }
-
+   
   return (
     <Provider store={store}>
       <View style={{ flex: 1 }}>
