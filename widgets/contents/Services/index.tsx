@@ -20,8 +20,11 @@ import { faMedrt } from "@fortawesome/free-brands-svg-icons";
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "./styles/styles";
 import { useLogOut } from "shared/lib/hooks/useLogout";
+import { useSelector } from "react-redux";
 
 const ServicesContent: React.FC = () => {
+  const firstName = useSelector((state: RootState) => state.firstName.username);
+
   const navigation = useNavigation<any>();
   const { logOut } = useLogOut();
 
@@ -31,7 +34,7 @@ const ServicesContent: React.FC = () => {
       <View style={styles.profileContainer}>
         <View style={styles.detailsContainer}>
           <View>
-            <Text style={styles.name}>Диас А.</Text>
+            <Text style={styles.name}>{firstName}</Text>
             <Text style={styles.time}>Настройка</Text>
           </View>
         </View>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Image,
@@ -15,15 +15,29 @@ import HomeAdvertSwipe from "features/Advert/ui";
 import UnderTab from "features/UnderTab/ui";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "redux/store";
 import { styles } from "./styles/styles";
 import { InsuranceCard } from "entities/InsuranceCard/ui";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { toggleOffLoader, toggleOnLoader } from "redux/slices/loaderSlice";
+import { Loader } from "shared/ui/Loader";
 
 const HomeContent: React.FC = () => {
   const today = new Date();
   const firstName = useSelector((state: RootState) => state.firstName.username);
+  const isLoading = useSelector((state: RootState) => state.loading.isLoading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(toggleOffLoader());
+    }, 2000);
+  });
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   const formatter = new Intl.DateTimeFormat("ru-RU", {
     weekday: "short",

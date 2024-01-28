@@ -11,6 +11,7 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { Colors } from "shared/styles/theme"; // Make sure this path is correct
 import { styles } from "./styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { UpperTabBack } from "features/UpperTabs/ui";
 
 interface ChatUnderProps {
   message: any;
@@ -27,7 +28,7 @@ export const ChatUnderTab: React.FC<ChatUnderProps> = ({
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
+      keyboardVerticalOffset={0}
     >
       <View style={styles.chatLower}>
         <TextInput

@@ -19,14 +19,14 @@ const AdvertaHomeSwiper = () => {
           <Image source={item} style={styles.image} />
           <View style={styles.textContainer}>
             <Text style={styles.textTitle}>Halyk 1000</Text>
-            <Text style={styles.textSupTitle}>ебать</Text>
+            <Text style={styles.textSupTitle}></Text>
           </View>
         </View>
         <View style={styles.slideItem}>
           <Image source={item} style={styles.image} />
           <View style={styles.textContainer}>
             <Text style={styles.textTitle}>Halyk 1000</Text>
-            <Text style={styles.textSupTitle}>ебать</Text>
+            <Text style={styles.textSupTitle}></Text>
           </View>
         </View>
       </View>
@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 20,
     marginBottom: 32,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingVertical: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   carouselContentContainer: {
     paddingHorizontal: SLIDE_MARGIN / 2,
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   slideItem: {
-    flexDirection: 'row',
-    marginVertical: 5
+    flexDirection: "row",
+    marginVertical: 5,
   },
   textContainer: {
-    flexDirection: 'column'
-  }, 
+    flexDirection: "column",
+  },
   textTitle: {
     color: Colors.text_gray,
     fontFamily: Fonts.medium,
