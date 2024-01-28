@@ -9,7 +9,6 @@ import { toggleOffLoader, toggleOnLoader } from "redux/slices/loaderSlice";
 import { RootState } from "redux/store";
 import { Loader } from "shared/ui/Loader";
 import { styles } from "./styles";
-
 interface EarthquakeData {
   magnitude: number;
   location: string;
