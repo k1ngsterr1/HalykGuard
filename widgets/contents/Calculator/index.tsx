@@ -11,8 +11,10 @@ import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { Input } from "shared/ui/Input";
 import axios from "axios";
+import { Loader } from "shared/ui/Loader";
 
 const CalculatorContent: React.FC = () => {
+  const [isLoading, setLoading] = useState(true);
   const [step, setStep] = useState(0);
   const [date, setDate] = useState("02.04.2006");
   const [gender, setGender] = useState("1");
@@ -51,12 +53,12 @@ const CalculatorContent: React.FC = () => {
     const data = {
       date_of_birth: "04.02.2005",
       gender: gender,
-      insurance_coverage_duration_years: '10',
-      premium_payment_period_years: '50',
+      insurance_coverage_duration_years: "10",
+      premium_payment_period_years: "50",
       premium_payment_frequency: paymentFrequency,
       tt_insurance_sum: insuranceAmount,
-      total_insurance_sum: '100000',
-      insurance_premium: '500000',
+      total_insurance_sum: "100000",
+      insurance_premium: "500000",
     };
     try {
       const url = "https://halyk-production.up.railway.app/api/v1/calculator/";
@@ -79,14 +81,12 @@ const CalculatorContent: React.FC = () => {
     setStep(5);
   };
 
-  
-
   return (
-    <SafeAreaView style={styles.container}>
-      <UpperTabBack backNavigation="Home" headingTitle="Калькулятор" />
-      <Text style={styles.title}>{getStepText()}</Text>
+    <>
       {step == 0 ? (
-        <>
+        <SafeAreaView style={styles.container}>
+          <UpperTabBack backNavigation="Home" headingTitle="Калькулятор" />
+          <Text style={styles.title}>{getStepText()}</Text>
           <DataPicker setDate={setDate} />
           <View style={{ alignItems: "center" }}>
             <CustomButton
@@ -96,12 +96,14 @@ const CalculatorContent: React.FC = () => {
               }}
             />
           </View>
-        </>
+        </SafeAreaView>
       ) : (
         ""
       )}
       {step == 1 ? (
-        <>
+        <SafeAreaView style={styles.container}>
+          <UpperTabBack backNavigation="Home" headingTitle="Калькулятор" />
+          <Text style={styles.title}>{getStepText()}</Text>
           <PickerSex setGender={setGender} />
           <View style={{ alignItems: "center" }}>
             <CustomButton
@@ -111,12 +113,14 @@ const CalculatorContent: React.FC = () => {
               }}
             />
           </View>
-        </>
+        </SafeAreaView>
       ) : (
         ""
       )}
       {step == 2 ? (
-        <>
+        <SafeAreaView style={styles.container}>
+          <UpperTabBack backNavigation="Home" headingTitle="Калькулятор" />
+          <Text style={styles.title}>{getStepText()}</Text>
           <PickerPayments setPaymentFrequency={setPaymentFrequency} />
           <View style={{ alignItems: "center" }}>
             <CustomButton
@@ -126,12 +130,14 @@ const CalculatorContent: React.FC = () => {
               }}
             />
           </View>
-        </>
+        </SafeAreaView>
       ) : (
         ""
       )}
       {step == 3 ? (
-        <>
+        <SafeAreaView style={styles.container}>
+          <UpperTabBack backNavigation="Home" headingTitle="Калькулятор" />
+          <Text style={styles.title}>{getStepText()}</Text>
           <PickerAmount setInsuranceAmount={setInsuranceAmount} />
           <View style={{ alignItems: "center" }}>
             <CustomButton
@@ -140,28 +146,28 @@ const CalculatorContent: React.FC = () => {
               onPress={handleSubmit(onSubmit)}
             />
           </View>
-        </>
+        </SafeAreaView>
       ) : (
         ""
       )}
       {step == 5 ? (
         <>
-          <Text>{formattedParams}</Text>
-
-          <View style={{ alignItems: "center" }}>
-            <CustomButton
-              marginTop={20}
-              title="Получить страховку!"
-              onPress={() => {
-                navigation.navigate('Home')
-              }}
-            />
-          </View>
+          {Object.keys(formattedParams).length === 0 ? (
+            <Loader />
+          ) : (
+            <SafeAreaView style={styles.container}>
+              <UpperTabBack backNavigation="Home" headingTitle="Калькулятор" />
+              <Text style={styles.title}>
+                {getStepText()}
+                <Text>{formattedParams}</Text>
+              </Text>
+            </SafeAreaView>
+          )}
         </>
       ) : (
         ""
       )}
-    </SafeAreaView>
+    </>
   );
 };
 
