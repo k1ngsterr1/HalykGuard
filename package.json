@@ -4,6 +4,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "postinstall": "patch-package",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -16,15 +17,18 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-native-fontawesome": "^0.3.0",
     "@react-native-async-storage/async-storage": "^1.21.0",
-    "@react-native-community/datetimepicker": "^7.6.2",
+    "@react-native-community/datetimepicker": "7.6.1",
     "@react-native-masked-view/masked-view": "0.3.0",
     "@react-native-picker/picker": "^2.6.1",
     "@react-navigation/stack": "^6.3.20",
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.7",
+    "deprecated-react-native-prop-types": "^5.0.0",
     "expo": "~50.0.4",
     "expo-font": "^11.10.2",
+    "expo-notifications": "~0.27.6",
     "expo-status-bar": "~1.11.1",
+    "patch-package": "^8.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.49.3",
@@ -35,8 +39,7 @@
     "react-native-svg": "^14.1.0",
     "react-native-swiper": "^1.6.0",
     "react-native-web": "~0.19.6",
-    "react-redux": "^9.1.0",
-    "expo-notifications": "~0.27.6"
+    "react-redux": "^9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

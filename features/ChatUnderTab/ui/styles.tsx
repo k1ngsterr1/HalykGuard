@@ -2,26 +2,28 @@ import { StyleSheet } from "react-native";
 import { Colors, Fonts } from "shared/styles/theme";
 
 export const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    flex: 1, // Use flex 1 to make the KeyboardAvoidingView fill the screen
+    justifyContent: "flex-end", // Align children to the bottom
+  },
   chatLower: {
     width: "100%",
-    height: 90,
-    position: "absolute",
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    bottom: 0,
+    justifyContent: "space-between", // Use space-between to align TextInput and Icon
     backgroundColor: "white",
+    padding: 10, // Add some padding around the input area
   },
   lowerInput: {
-    width: "80%",
     height: 50,
-    padding: 4,
+    flex: 1, // TextInput should fill the available space
+    marginRight: 10, // Add margin to the right of TextInput
     backgroundColor: "#EDEDED",
-    margin: "auto",
+    borderRadius: 20, // Optional: round the corners of the TextInput
+    padding: 15, // Padding inside the TextInput
   },
   icon: {
-    fontSize: 32,
     color: Colors.primary_green,
   },
 });
