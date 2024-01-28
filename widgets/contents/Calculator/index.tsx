@@ -10,13 +10,14 @@ import PickerAmount from "features/InsuranceForm/ui/PickerAmount";
 import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { Input } from "shared/ui/Input";
+import axios from "axios";
 
 const CalculatorContent: React.FC = () => {
   const [step, setStep] = useState(0);
-  const [date, setDate] = useState("");
-  const [gender, setGender] = useState("");
-  const [paymentFrequency, setPaymentFrequency] = useState("");
-  const [insuranceAmount, setInsuranceAmount] = useState("");
+  const [date, setDate] = useState("02.04.2006");
+  const [gender, setGender] = useState("1");
+  const [paymentFrequency, setPaymentFrequency] = useState("1");
+  const [insuranceAmount, setInsuranceAmount] = useState("200000");
 
   const navigation = useNavigation<any>();
 
@@ -38,10 +39,45 @@ const CalculatorContent: React.FC = () => {
       case 4:
         result = "Вот последнее заполните :)";
         break;
+      case 5:
+        result = "Ваш результат:";
+        break;
     }
     return result;
   };
-  const { control, handleSubmit, formState } = useForm();
+  const { control, handleSubmit } = useForm();
+  const sendDataToServer = async (formData: any) => {
+    const data = {
+      date_of_birth: '04.02.2006',
+      gender: gender,
+      insurance_coverage_duration_years: formData.f1,
+      premium_payment_period_years: formData.f2,
+      premium_payment_frequency: paymentFrequency,
+      tt_insurance_sum: insuranceAmount,
+      total_insurance_sum: formData.f3,
+      insurance_premium: formData.f4
+    };
+    try {
+      const url = "https://halyk-production.up.railway.app/api/v1/calculator/";
+      const response = await axios.post(url, data);
+      console.log("Ответ сервера:", response.data);
+    } catch (error) {
+      console.error("Ошибка при отправке данных формы:", error);
+    }
+  };
+
+  const onSubmit = (data: any) => {
+    sendDataToServer(data);
+    console.log( data.f1);
+    console.log( data.f2);
+    console.log( data.f3);
+    console.log( data.f4);
+    console.log( date.toString());
+    console.log( gender);
+    console.log( paymentFrequency);
+    console.log( insuranceAmount);
+    
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -70,7 +106,6 @@ const CalculatorContent: React.FC = () => {
               title="Дальше"
               onPress={() => {
                 setStep(2);
-                console.log(gender);
               }}
             />
           </View>
@@ -86,7 +121,6 @@ const CalculatorContent: React.FC = () => {
               title="Дальше"
               onPress={() => {
                 setStep(3);
-                console.log(paymentFrequency);
               }}
             />
           </View>
@@ -102,7 +136,6 @@ const CalculatorContent: React.FC = () => {
               title="Дальше"
               onPress={() => {
                 setStep(4);
-                console.log(insuranceAmount);
               }}
             />
           </View>
@@ -115,70 +148,72 @@ const CalculatorContent: React.FC = () => {
           <Controller
             control={control}
             name="f1"
-            rules={{
-              required: "Введите Срок действия страховой защиты (лет)",
-            }}
             render={({ field: { onChange, value } }) => (
               <Input
                 placeholder="Срок действия страховой защиты (лет)"
                 onChangeText={onChange}
                 value={value}
-                marginTop={32}
+                marginTop={40}
               />
             )}
           />
           <Controller
             control={control}
             name="f2"
-            rules={{
-              required: "Введите Период уплаты страховых взносов",
-            }}
             render={({ field: { onChange, value } }) => (
               <Input
                 placeholder="Период уплаты страховых взносов (лет)"
                 onChangeText={onChange}
                 value={value}
-                marginTop={32}
+                marginTop={40}
               />
             )}
           />
           <Controller
             control={control}
             name="f3"
-            rules={{
-              required: "Введите Страховую сумму",
-            }}
             render={({ field: { onChange, value } }) => (
               <Input
                 placeholder="Страховая сумма"
                 onChangeText={onChange}
                 value={value}
-                marginTop={32}
+                marginTop={40}
               />
             )}
           />
           <Controller
             control={control}
             name="f4"
-            rules={{
-              required: "Введите Страховую премию",
-            }}
             render={({ field: { onChange, value } }) => (
               <Input
                 placeholder="Страховая премия"
                 onChangeText={onChange}
                 value={value}
-                marginTop={32}
+                marginTop={40}
               />
             )}
           />
 
           <View style={{ alignItems: "center" }}>
             <CustomButton
+              marginTop={20}
               title="Подать заявку!"
-              onPress={() => {
-                navigation.navigation("Home");
-              }}
+              onPress={handleSubmit(onSubmit)}
+            />
+          </View>
+        </>
+      ) : (
+        ""
+      )}
+      {step == 5 ? (
+        <>
+          <Text>dd</Text>
+
+          <View style={{ alignItems: "center" }}>
+            <CustomButton
+              marginTop={20}
+              title="Подать заявку!"
+              onPress={handleSubmit(onSubmit)}
             />
           </View>
         </>
