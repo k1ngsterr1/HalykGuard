@@ -9,8 +9,6 @@ import { toggleOffLoader, toggleOnLoader } from "redux/slices/loaderSlice";
 import { RootState } from "redux/store";
 import { Loader } from "shared/ui/Loader";
 import { styles } from "./styles";
-import * as Notifications from "expo-notifications";
-
 interface EarthquakeData {
   magnitude: number;
   location: string;

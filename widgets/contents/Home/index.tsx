@@ -46,7 +46,7 @@ const HomeContent: React.FC = () => {
   });
 
   const formattedDate = formatter.format(today);
-  const username = AsyncStorage.getItem("username");
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -63,7 +63,7 @@ const HomeContent: React.FC = () => {
       <HomeSwiper />
       <NavPanel />
       <HomeAdvertSwipe />
-      {/* <View style={{ height: 250 }}></View> */}
+      <View style={{ height: 250 }}></View>
       <UnderTab activeId={1} />
     </SafeAreaView>
   );
