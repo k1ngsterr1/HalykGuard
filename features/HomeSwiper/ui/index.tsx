@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   carouselContentContainer: {
-    paddingHorizontal: SLIDE_MARGIN / 2, 
+    paddingHorizontal: SLIDE_MARGIN / 2,
   },
   slide: {
     justifyContent: "center",
     alignItems: "center",
     width: SLIDE_WIDTH,
-    marginHorizontal: SLIDE_MARGIN, 
+    marginHorizontal: SLIDE_MARGIN,
   },
   image: {
     width: "100%",
