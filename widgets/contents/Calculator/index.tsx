@@ -51,12 +51,12 @@ const CalculatorContent: React.FC = () => {
     const data = {
       date_of_birth: "04.02.2005",
       gender: gender,
-      insurance_coverage_duration_years: formData.f1,
-      premium_payment_period_years: formData.f2,
+      insurance_coverage_duration_years: '10',
+      premium_payment_period_years: '50',
       premium_payment_frequency: paymentFrequency,
       tt_insurance_sum: insuranceAmount,
-      total_insurance_sum: formData.f3,
-      insurance_premium: formData.f4,
+      total_insurance_sum: '100000',
+      insurance_premium: '500000',
     };
     try {
       const url = "https://halyk-production.up.railway.app/api/v1/calculator/";
@@ -133,69 +133,6 @@ const CalculatorContent: React.FC = () => {
       {step == 3 ? (
         <>
           <PickerAmount setInsuranceAmount={setInsuranceAmount} />
-          <View style={{ alignItems: "center" }}>
-            <CustomButton
-              title="Дальше"
-              onPress={() => {
-                setStep(4);
-              }}
-            />
-          </View>
-        </>
-      ) : (
-        ""
-      )}
-      {step == 4 ? (
-        <>
-          <Controller
-            control={control}
-            name="f1"
-            render={({ field: { onChange, value } }) => (
-              <Input
-                placeholder="Срок действия страховой защиты (лет)"
-                onChangeText={onChange}
-                value={value}
-                marginTop={40}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="f2"
-            render={({ field: { onChange, value } }) => (
-              <Input
-                placeholder="Период уплаты страховых взносов (лет)"
-                onChangeText={onChange}
-                value={value}
-                marginTop={40}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="f3"
-            render={({ field: { onChange, value } }) => (
-              <Input
-                placeholder="Страховая сумма"
-                onChangeText={onChange}
-                value={value}
-                marginTop={40}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="f4"
-            render={({ field: { onChange, value } }) => (
-              <Input
-                placeholder="Страховая премия"
-                onChangeText={onChange}
-                value={value}
-                marginTop={40}
-              />
-            )}
-          />
-
           <View style={{ alignItems: "center" }}>
             <CustomButton
               marginTop={20}
