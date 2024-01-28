@@ -9,7 +9,7 @@ import { ChatUnderTab } from "features/ChatUnderTab/ui";
 export const ChatBotContent: React.FC = () => {
   return (
     <SafeAreaView style={globalStyles.container}>
-      <UpperTabBack headingTitle="Чат Бот" />
+      <UpperTabBack headingTitle="Чат Бот" backNavigation="Home" />
       <ChatUnderTab />
     </SafeAreaView>
   );

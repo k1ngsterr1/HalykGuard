@@ -18,9 +18,6 @@ export const ChatUnderTab = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
     >
-      {/* Rest of the content on the screen should go here */}
-
-      {/* This View will automatically be pushed up by the KeyboardAvoidingView */}
       <View style={styles.chatLower}>
         <TextInput
           style={styles.lowerInput}

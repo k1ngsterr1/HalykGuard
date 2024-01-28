@@ -29,7 +29,6 @@ const HomeCarousel = () => {
         inactiveSlideOpacity={1}
         loop={true}
         autoplay={false}
-        showsPagination={false}
         contentContainerCustomStyle={styles.carouselContentContainer}
       />
     </View>
