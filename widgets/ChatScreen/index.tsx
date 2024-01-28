@@ -12,19 +12,20 @@ const ChatScreen = () => {
 
   // Function to handle sending messages
   const sendMessage = async () => {
-    if (message.trim()) {
-      try {
-        const response = await axios.post(
-          "https://halyk-production.up.railway.app/api/v1/chat/",
-          {
+    try {
+      const response = await axios.post(
+        "https://halyk-production.up.railway.app/api/v1/chat/",
+        {},
+        {
+          params: {
             message: message,
-            // Add other message properties if needed, like sender ID, timestamp, etc.
-          }
-        );
-        setMessage("");
-      } catch (error) {
-        console.error(error);
-      }
+          },
+        }
+      );
+      console.log("sended", message);
+      setMessage("");
+    } catch (error) {
+      console.error(error, message);
     }
   };
 
@@ -41,7 +42,11 @@ const ChatScreen = () => {
         )}
       />
       {/* Input to type the message */}
-      <ChatUnderTab />
+      <ChatUnderTab
+        message={message}
+        setMessage={setMessage}
+        sendMessage={sendMessage}
+      />
     </View>
   );
 };
