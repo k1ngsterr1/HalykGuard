@@ -19,6 +19,7 @@ const CalculatorContent: React.FC = () => {
   const [paymentFrequency, setPaymentFrequency] = useState("1");
   const [insuranceAmount, setInsuranceAmount] = useState("200000");
 
+  const [resp, setResp] = useState({});
   const navigation = useNavigation<any>();
 
   const getStepText = () => {
@@ -48,36 +49,37 @@ const CalculatorContent: React.FC = () => {
   const { control, handleSubmit } = useForm();
   const sendDataToServer = async (formData: any) => {
     const data = {
-      date_of_birth: '04.02.2006',
+      date_of_birth: "04.02.2005",
       gender: gender,
       insurance_coverage_duration_years: formData.f1,
       premium_payment_period_years: formData.f2,
       premium_payment_frequency: paymentFrequency,
       tt_insurance_sum: insuranceAmount,
       total_insurance_sum: formData.f3,
-      insurance_premium: formData.f4
+      insurance_premium: formData.f4,
     };
     try {
       const url = "https://halyk-production.up.railway.app/api/v1/calculator/";
       const response = await axios.post(url, data);
-      console.log("Ответ сервера:", response.data);
+      setResp(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("Ошибка при отправке данных формы:", error);
     }
   };
 
+  const formattedParams = Object.entries(resp).map(([key, value]) => (
+    <Text key={key} style={styles.item}>
+      {`${key}: ${value}`} {"\n"}
+    </Text>
+  ));
+
   const onSubmit = (data: any) => {
     sendDataToServer(data);
-    console.log( data.f1);
-    console.log( data.f2);
-    console.log( data.f3);
-    console.log( data.f4);
-    console.log( date.toString());
-    console.log( gender);
-    console.log( paymentFrequency);
-    console.log( insuranceAmount);
-    
+    setStep(5);
   };
+
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -207,13 +209,15 @@ const CalculatorContent: React.FC = () => {
       )}
       {step == 5 ? (
         <>
-          <Text>dd</Text>
+          <Text>{formattedParams}</Text>
 
           <View style={{ alignItems: "center" }}>
             <CustomButton
               marginTop={20}
-              title="Подать заявку!"
-              onPress={handleSubmit(onSubmit)}
+              title="Получить страховку!"
+              onPress={() => {
+                navigation.navigate('Home')
+              }}
             />
           </View>
         </>
@@ -235,6 +239,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: Fonts.medium,
     marginTop: 105,
+  },
+  item: {
+    marginBottom: 10,
+    fontSize: 16,
   },
 });
 

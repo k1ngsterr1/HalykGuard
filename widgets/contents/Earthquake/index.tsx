@@ -9,11 +9,6 @@ import { toggleOffLoader, toggleOnLoader } from "redux/slices/loaderSlice";
 import { RootState } from "redux/store";
 import { Loader } from "shared/ui/Loader";
 import { styles } from "./styles";
-<<<<<<< HEAD
-import * as Notifications from 'expo-notifications';
-=======
-import * as Notifications from "expo-notifications";
->>>>>>> 07b2156119d992a17bc2b0c42b86d02009e4b599
 
 interface EarthquakeData {
   magnitude: number;
@@ -73,9 +68,6 @@ const EarthquakeContent: React.FC = () => {
       <Text style={styles.title}>Землетрясение</Text>
       {list.map((i, index) => (
         <TouchableOpacity key={index} style={styles.buttonContainer}>
-<<<<<<< HEAD
-          <View style={{backgroundColor: getColorForMagnitude(i.magnitude), width:40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 50}}>
-=======
           <View
             style={{
               backgroundColor: getColorForMagnitude(i.magnitude),
@@ -86,7 +78,6 @@ const EarthquakeContent: React.FC = () => {
               borderRadius: 50,
             }}
           >
->>>>>>> 07b2156119d992a17bc2b0c42b86d02009e4b599
             <Text
               style={{
                 color: "white",
@@ -108,8 +99,4 @@ const EarthquakeContent: React.FC = () => {
   );
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 07b2156119d992a17bc2b0c42b86d02009e4b599
 export default EarthquakeContent;
